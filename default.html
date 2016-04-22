@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hennis Simulator 3000</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+    <div id="scoreboard">
+        <table id="score">
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th></th>
+                <th>sets</th>
+                <th>games</th>
+                <th>points</th>
+            </tr>
+            <tr>
+                <td id="as1" class="num"></td>
+                <td id="as2" class="num"></td>
+                <td id="as3" class="num"></td>
+                <td id="ap" class="player serve"></td>
+                <td id="as" class="num"></td>
+                <td id="ag" class="num"></td>
+                <td id="apt" class="num num-double"></td>
+            </tr>
+            <tr>
+                <td id="h1" class="num"></td>
+                <td id="h2" class="num"></td>
+                <td id="h3" class="num"></td>
+                <td id="hp" class="player"></td>
+                <td id="hs" class="num"></td>
+                <td id="hg" class="num"></td>
+                <td id="hpt" class="num num-double"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="court-wrapper">
+        <div id="court">
+            <div id="sack">
+            </div>
+            <div class="block">
+            </div>
+            <div class="block net">
+            </div>
+            <div class="block">
+            </div>
+            <div class="block">
+            </div>
+            <div class="block">
+            </div>
+            <div class="block net">
+            </div>
+            <div class="block">
+            </div>
+            <div class="block">
+            </div>
+        </div>
+        <div id="summary">
+            <div class="summary-line summary-commentary">
+                Welcome ladies and gentlemen to another glorious Hennis gamecast! I'm Biff Henderson joined as always by the inventor of Hennis: None other than Ginger Santa!  We've got a great match for you today.  The weather is a balmy 97 degrees and the sun will be baking the Braised Turkey all match! Perfect Hennis weather!
+            </div>
+        </div>
+    </div>
+    <button id="button">
+        Next Point
+    </button>
+
+
+    <div class="data" id="s1" data-value="Ace from {p1}!" />
+    <div class="data" id="s2" data-value="{v} from {p1} for the point." />
+    <div class="data" id="s3" data-value="Failed {v} from {p2} gives {t} the point." />
+    <div class="data" id="s4" data-value="{p2} attempts a {v} but falls down resulting in a Christmas Ham and a point for {t}" />
+
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+﻿#scoreboard  {
+  width:550px; 
+  margin:20px auto; 
+  background-color:green;
+  padding: 30px;
+  }
+
+#score th{
+  color:#fff;
+}
+
+#score td{
+  background-color:#333;
+}
+
+#score td.num{
+  height: 75px;
+  width: 50px;
+  color: yellow;
+  text-align:center;
+  font-size: 60px;
+}
+
+#score td.num-double{
+  width:100px;
+}
+
+#score td.player{
+  width: 200px;
+  color: yellow;
+  font-size: 30px;
+  text-align:center;
+}
+
+#score td.serve::before {
+  content:"";
+  height:20px;
+  width:20px;
+  margin-right:10px;
+  display:inline-block;
+  border-radius:500px;
+  background-color:yellow;
+}
+
+#court-wrapper {
+    width:800px;
+    margin: 0px auto;
+}
+
+
+#court{
+  width:450px;
+  height:300px;
+  background-color:gray;
+  float:left;
+}
+
+div.block {
+  width:calc(25% - 2px);
+  height:148px;
+  float:left;
+  border:solid 1px #ccc;
+}
+
+div.net {
+  border-right: solid 1px yellow;
+}
+
+div#summary {
+  height:300px;
+  width: 300px;
+  display:block;
+  float:left;
+  background-color:#fff;
+  margin-left:20px;
+  overflow-y:scroll;
+}
+div#summary::before{content: "Game Summary"; }
+div.summary-line {
+  font-family: Arial;
+  border-bottom: solid 1px #333;
+  padding:5px;
+  font-size: 11px;
+}
+
+button {display:block; width:100px; margin:20px auto;}
+
+div.data {display:none;}
+
+#sack {
+  position:absolute;
+  height:20px;
+  width: 20px;
+  border-radius:500px;
+  background-color: green;
+}
+
+#sack.serve-left-ace { animation:serve-left-ace 1s forwards;}
+#sack.serve-right-ace { animation:serve-right-ace 1s forwards;}
+#sack.volley-score-right { animation:volley-score-right 2s forwards;}
+
+@keyframes serve-left-ace {
+    0% {
+        transform: translate3d(0px, 250px, 0px) scale(1.0);
+        animation-timing-function: ease-in;
+    }
+    50% {
+        transform: translate3d(225px, 150px, 0px) scale(1.5);
+        //animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d(300px, 100px, 0px) scale(1.0);
+    }
+}
+
+@keyframes serve-right-ace {
+    0% {
+        transform: translate3d(450px, 50px, 0px) scale(1.0);
+        animation-timing-function: ease-in;
+    }
+    50% {
+        transform: translate3d(225px, 150px, 0px) scale(1.5);
+        //animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d(150px, 200px, 0px) scale(1.0);
+    }
+}
+
+@keyframes volley-score-right{
+  0% {
+        transform: translate3d(450px, 50px, 0px) scale(1.0);
+        animation-timing-function: ease-in;
+    }
+    25% {
+        transform: translate3d(225px, 150px, 0px) scale(1.5);
+        //animation-timing-function: ease-out;
+    }
+    50% {
+        transform: translate3d(150px, 200px, 0px) scale(1.0);
+    }
+    75%{
+        transform: translate3d(225px, 150px, 0px) scale(1.5);
+        //animation-timing-function: ease-in;
+    }
+    100%{
+      transform: translate3d(300px, 75px, 0px) scale(1.0);
+    }
+}
