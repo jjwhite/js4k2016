@@ -20,6 +20,7 @@ function game(t1, t2) {
     t.ag = 0;
     t.hset = 0;
     t.aset = 0;
+    t.cset = 1;
     $('#hp')[0].textContent = t.ht.p1 + '/' + t.ht.p2;
     $('#ap')[0].innerHTML += t.at.p1 + '/' + t.at.p2;
 }
@@ -32,29 +33,29 @@ game.prototype.point = function () {
         case "h":
             if (wa[0] == "w") {
                 t.hg++;
-                t.hasWinner('#hg', t.hg);
-                t.hset++
-                return;
+                if (t.hg == 4) t.hset++;
+                t.hasWinner(t.hg, t.hset);
+            } else {
+                t.hs = wa[0];
+                t.as = wa[1];
             }
-            t.hs = wa[0];
-            t.as = wa[1];
             break;
         case "a":
             if (wa[0] == "w") {
                 t.ag++;
-                t.hasWinner('#ag', t.ag);
-                t.aset++;
-                return;
+                if (t.ag == 4) t.aset++;
+                t.hasWinner(t.ag, t.aset);
+
+            } else {
+                t.as = wa[0];
+                t.hs = wa[1];
             }
-            t.as = wa[0];
-            t.hs = wa[1];
             break;
     }
 
     //winner found now determine a summary
     t.getSummary(winner);
-    $('#hpt')[0].textContent = this.hs;
-    $('#apt')[0].textContent = this.as;
+    this.updateSB();
     //setTimeout(function () { t.point(); }, 1000);
 }
 
@@ -90,21 +91,28 @@ game.prototype.doScore = function (curScore) {
     return (curScore < 30) ? curScore + 15 : curScore + 10;
 }
 
-game.prototype.hasWinner = function (w, v) {
-    $(w)[0].textContent = v;
-    if (v < 4) {
-        this.rGame();
-        //this.point();
+game.prototype.hasWinner = function (v,sets) {
+    this.as = 0;
+    this.hs = 0;
+    
+    if (v == 4) {
+        $('#as' + this.cset)[0].textContent = this.ag;
+        $('#h' + this.cset)[0].textContent = this.hg;
+        this.cset++;
+        this.ag = 0;
+        this.hg = 0;  
     }
+    
+    if (sets == 2) { alert("Game Over");}
 }
 
 game.prototype.updateSB = function () {
-
-}
-
-game.prototype.rGame = function () {
-    this.as = 0;
-    this.hs = 0;
+    $('#hg')[0].textContent = this.hg;
+    $('#ag')[0].textContent = this.ag;
+    $('#hpt')[0].textContent = this.hs;
+    $('#apt')[0].textContent = this.as;
+    $('#as')[0].textContent = this.aset;
+    $('#hs')[0].textContent = this.hset;
 }
 
 game.prototype.getSummary = function (w) {
