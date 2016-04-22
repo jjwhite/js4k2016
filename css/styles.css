@@ -1,4 +1,5 @@
-﻿#scoreboard  {
+﻿img {width:75px;}
+#scoreboard  {
   width:550px; 
   margin:20px auto; 
   background-color:green;
@@ -95,39 +96,50 @@ div.data {display:none;}
   background-color: green;
 }
 
-#sack.serve-left-ace { animation:serve-left-ace 1s forwards;}
-#sack.serve-right-ace { animation:serve-right-ace 1s forwards;}
-#sack.volley-score-right { animation:volley-score-right 2s forwards;}
+#sack.h-ace { animation:h-ace 0.5s forwards;}
+#sack.h-v1 {animation:h-v1 2s forwards;}
+#sack.a-ace { animation:a-ace 0.5s forwards;}
+#sack.a-v1 { animation:a-v1 2s forwards;}
 
-@keyframes serve-left-ace {
+@keyframes h-ace {
     0% {
-        transform: translate3d(0px, 250px, 0px) scale(1.0);
+        transform: translate3d(0px, 250px, 0px) scale(1.5);
         animation-timing-function: ease-in;
-    }
-    50% {
-        transform: translate3d(225px, 150px, 0px) scale(1.5);
-        //animation-timing-function: ease-out;
     }
     100% {
         transform: translate3d(300px, 100px, 0px) scale(1.0);
     }
 }
 
-@keyframes serve-right-ace {
+@keyframes h-v1 {
     0% {
-        transform: translate3d(450px, 50px, 0px) scale(1.0);
+        transform: translate3d(0px, 250px, 0px) scale(1.0);
         animation-timing-function: ease-in;
     }
-    50% {
-        transform: translate3d(225px, 150px, 0px) scale(1.5);
-        //animation-timing-function: ease-out;
+    
+    35% {
+        transform: translate3d(300px, 100px, 0px) scale(1.0);
+    }
+    
+    65%{
+        transform: translate3d(70px, 250px, 0px) scale(1.0);
+    }
+    100%{
+        transform: translate3d(300px, 100px, 0px) scale(1.0);
+    }
+}
+
+@keyframes a-ace {
+    0% {
+        transform: translate3d(450px, 50px, 0px) scale(1.5);
+        animation-timing-function: ease-in;
     }
     100% {
         transform: translate3d(150px, 200px, 0px) scale(1.0);
     }
 }
 
-@keyframes volley-score-right{
+@keyframes a-v1{
   0% {
         transform: translate3d(450px, 50px, 0px) scale(1.0);
         animation-timing-function: ease-in;

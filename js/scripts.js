@@ -1,4 +1,4 @@
-﻿var sack;
+﻿var sack, summary;
 document.addEventListener("DOMContentLoaded", function (event) {
     var g = new game(home, away);    
 
@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }, false);
 
     sack = $('#sack')[0];
+    summary = $('#summary')[0];
+    //sack.className = "h-v1";
 });
 
 function game(t1, t2) {
@@ -21,11 +23,14 @@ function game(t1, t2) {
     t.hset = 0;
     t.aset = 0;
     t.cset = 1;
+    t.st = t.ht;
     $('#hp')[0].textContent = t.ht.p1 + '/' + t.ht.p2;
     $('#ap')[0].innerHTML += t.at.p1 + '/' + t.at.p2;
+    $('#hp')[0].classList.add("serve");
 }
 
 game.prototype.point = function () {
+   
     t = this;
     var winner = (Math.random() >= 0.5) ? "h" : "a";
     var wa = (winner == "h") ? t.setScore(t.hs, t.as) : t.setScore(t.as, t.hs);
@@ -55,7 +60,7 @@ game.prototype.point = function () {
 
     //winner found now determine a summary
     t.getSummary(winner);
-    this.updateSB();
+    
     //setTimeout(function () { t.point(); }, 1000);
 }
 
@@ -94,6 +99,7 @@ game.prototype.doScore = function (curScore) {
 game.prototype.hasWinner = function (v,sets) {
     this.as = 0;
     this.hs = 0;
+    t.st = (t.st == t.ht) ? t.at : t.ht;
     
     if (v == 4) {
         $('#as' + this.cset)[0].textContent = this.ag;
@@ -113,24 +119,38 @@ game.prototype.updateSB = function () {
     $('#apt')[0].textContent = this.as;
     $('#as')[0].textContent = this.aset;
     $('#hs')[0].textContent = this.hset;
+    if (t.st == t.ht) {
+        $('#ap')[0].classList.remove("serve");
+        $('#hp')[0].classList.add("serve");
+    } else {
+        $('#hp')[0].classList.remove("serve");
+        $('#ap')[0].classList.add("serve");
+    }
 }
 
 game.prototype.getSummary = function (w) {
+    var self = this;
+    var css, t;
     var wteam = (w == "h") ? this.ht : this.at;
     var lteam = (w == "h") ? this.at : this.ht;
-
-    var ix = '#s' + getResult(4);
+    var n = (wteam == this.st) ? 4 : 3;
+    var ix = '#s' + getResult(n);
     var s = $(ix)[0].dataset.value;
+
     //string, point winner, person who failed, team who won
     var sum = buildSummary(s, wteam.p1, lteam.p1, wteam.p1+"/"+wteam.p2, verbGenerator());
-    $('#summary')[0].innerHTML += ('<div class="summary-line">' + sum + '</div>')
-    //sack.className = "";
-    //sack.className = "serve-left-ace";
+    if (sum.includes("Ace")) { css = w + "-ace"; t = 500; }
+    else { css = w + "-v1"; t = 2000;}
+
+    sack.className = css;
+    setTimeout(function () {
+        summary.innerHTML += ('<div class="summary-line">' + sum + '</div>')
+        summary.scrollTop = summary.scrollHeight;
+        self.updateSB();
+        sack.className = "none";
+    }, t);
+
 }
-
-
-
-
 
 //utilities
 function $(s) { return document.querySelectorAll(s); }
@@ -151,40 +171,29 @@ function buildSummary(s, p1, p2, t, v) {
 //Data
 var verbs = ['McNugget', 'Melvin', 'Sparkle Motion', 'Tricky Doodle', 'Taint Tickler', 'Gate Storm'];
 
-var jon = {
-    serve: 9,
-    ret: 5,
-    def: 5,
-    off: 7
-};
-
-var eric = {
-    serve: 7,
-    ret: 7,
-    def: 6,
-    off: 7
-};
-
-var sam = {
-    serve: 7,
-    ret: 5,
-    def: 9,
-    off: 7
-};
-
-var deuce = {
-    serve: 7,
-    ret: 5,
-    off: 8,
-    def: 7
-};
+var htanm = [
+    {
+        css: "h-ace",
+        time: 1
+    }
+]
+var atanm = [
+    {
+        css: "a-ace",
+        time: 1
+    },
+    {
+        css: "a-v1",
+        time: 2
+    }
+]
 
 var home = {
-    p1: "jon",
-    p2: "eric"
+    p1: "Jon",
+    p2: "Eric"
 };
 
 var away = {
-    p1: "sam",
-    p2: "deuce"
+    p1: "Sam",
+    p2: "Deuce"
 }
