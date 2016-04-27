@@ -101,6 +101,8 @@ game.prototype.hasWinner = function (v,sets) {
     this.hs = 0;
     t.st = (t.st == t.ht) ? t.at : t.ht;
     
+    if (sets == 1 && v == 3) alert("Scary Game");
+
     if (v == 4) {
         $('#as' + this.cset)[0].textContent = this.ag;
         $('#h' + this.cset)[0].textContent = this.hg;
@@ -133,7 +135,7 @@ game.prototype.getSummary = function (w) {
     var css, t;
     var wteam = (w == "h") ? this.ht : this.at;
     var lteam = (w == "h") ? this.at : this.ht;
-    var n = (wteam == this.st) ? 4 : 3;
+    var n = (wteam == this.st) ? 6 : 5;
     var ix = '#s' + getResult(n);
     var s = $(ix)[0].dataset.value;
 
@@ -144,7 +146,15 @@ game.prototype.getSummary = function (w) {
 
     sack.className = css;
     setTimeout(function () {
-        summary.innerHTML += ('<div class="summary-line">' + sum + '</div>')
+        if (self.hs == 0 && self.as == 0)
+            sum += " - <strong>" + wteam.p1 + "/" + wteam.p2 + " wins!</strong>";
+        else if (self.hs == "d")
+            sum += " - <strong>Deuce!</strong>";
+        else if (self.hs == "a" || self.as == "a")
+            sum += "- <strong>Advantage " + wteam.p1 + "/" + wteam.p2;
+        else
+            sum += " - <strong>" + self.hs + ":" + self.as + "</strong>";
+        summary.innerHTML += ('<div class="summary-line blink_me">' + sum + '</div>')
         summary.scrollTop = summary.scrollHeight;
         self.updateSB();
         sack.className = "none";

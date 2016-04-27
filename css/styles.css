@@ -1,5 +1,10 @@
-﻿img {width:75px;}
+﻿@font-face {
+    font-family: gas;
+    src: url(../fonts/GAS.TTF);
+}
+img {width:75px;}
 #scoreboard  {
+    
   width:550px; 
   margin:20px auto; 
   background-color:green;
@@ -29,7 +34,7 @@
 #score td.player{
   width: 200px;
   color: yellow;
-  font-size: 30px;
+  font-size: 30px;jww
   text-align:center;
 }
 
@@ -55,7 +60,7 @@
   background-color:gray;
   float:left;
 }
-
+ 
 div.block {
   width:calc(25% - 2px);
   height:148px;
@@ -87,6 +92,14 @@ div.summary-line {
 button {display:block; width:100px; margin:20px auto;}
 
 div.data {display:none;}
+
+.blink_me {
+  animation: blinker .75s linear 2;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
+}
 
 #sack {
   position:absolute;
