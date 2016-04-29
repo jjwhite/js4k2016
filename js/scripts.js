@@ -140,7 +140,7 @@ game.prototype.getSummary = function (w) {
     var s = $(ix)[0].dataset.value;
 
     //string, point winner, person who failed, team who won
-    var sum = buildSummary(s, wteam.p1, lteam.p1, wteam.p1+"/"+wteam.p2, verbGenerator());
+    var sum = (Math.random() >= 0.5) ? buildSummary(s, wteam.p1, lteam.p1, wteam.p1+"/"+wteam.p2, verbGenerator()) : buildSummary(s, wteam.p2, lteam.p2, wteam.p1+"/"+wteam.p2, verbGenerator()); 
     if (sum.includes("Ace")) { css = w + "-ace"; t = 500; }
     else { css = w + "-v1"; t = 2000;}
 

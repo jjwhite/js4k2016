@@ -2,7 +2,9 @@
     font-family: gas;
     src: url(../fonts/GAS.TTF);
 }
+
 img {width:75px;}
+img.logo {width:500px; margin:20px auto; display:block;}
 #scoreboard  {
     
   width:550px; 
