@@ -2,14 +2,29 @@
     font-family: gas;
     src: url(../fonts/GAS.TTF);
 }
+body {background-color:black;}
+body::after{
+    background-image:url(../i/very-colorful-hacky-sacks.png);
+    background-repeat:repeat;
+  content: "";
+    
+  opacity: 0.25;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+    
+}
 
 img {width:75px;}
 img.logo {width:500px; margin:20px auto; display:block;}
 #scoreboard  {
-    
+  
   width:550px; 
   margin:20px auto; 
-  background-color:green;
+  background-color:darkgreen;
   padding: 30px;
   }
 
@@ -27,6 +42,7 @@ img.logo {width:500px; margin:20px auto; display:block;}
   color: yellow;
   text-align:center;
   font-size: 60px;
+  font-family: Gas;
 }
 
 #score td.num-double{
@@ -36,8 +52,9 @@ img.logo {width:500px; margin:20px auto; display:block;}
 #score td.player{
   width: 200px;
   color: yellow;
-  font-size: 30px;jww
+  font-size: 30px;
   text-align:center;
+  font-family:Arial;
 }
 
 #score td.serve::before {
@@ -74,6 +91,27 @@ div.net {
   border-right: solid 1px yellow;
 }
 
+div.ad {
+    width:600px;
+    margin:20px auto;
+    background-color:yellow;
+    vertical-align:middle;
+}
+
+div.ad img{
+    width:260px;
+    height:126px;
+    margin:10px;
+}
+
+    div.ad div.sponsor {
+        text-align: right;
+        margin: 10px;
+        font-family: arial;
+        color: maroon;
+
+    }
+
 div#summary {
   height:300px;
   width: 300px;
@@ -91,7 +129,19 @@ div.summary-line {
   font-size: 11px;
 }
 
-button {display:block; width:100px; margin:20px auto;}
+button {display: block;
+    width: 500px;
+    margin: 20px auto;
+    height: 50px;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 30px;}
+
+button:active{
+    color:lightyellow;
+    background-color:#555;
+}
 
 div.data {display:none;}
 

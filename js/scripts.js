@@ -154,6 +154,7 @@ game.prototype.getSummary = function (w) {
             sum += "- <strong>Advantage " + wteam.p1 + "/" + wteam.p2;
         else
             sum += " - <strong>" + self.hs + ":" + self.as + "</strong>";
+        $('.summary-line')[$('.summary-line').length - 1].classList.remove('blink_me');
         summary.innerHTML += ('<div class="summary-line blink_me">' + sum + '</div>')
         summary.scrollTop = summary.scrollHeight;
         self.updateSB();
